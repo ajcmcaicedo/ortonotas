@@ -1,0 +1,39 @@
+codigointerno,percha,nivel,gaveta,codigoitem,lote,descripcion,cantidad,sw,des_espanol,id,tipo
+P13NAC1             ,P13       ,NA        ,C2        ,111-157             ,0,MANGO DE GUIA 2.5                                                                                   ,1,2,MANGO DE GUIA 2.5                                                                                   ,101,I  
+P13NAC1             ,P13       ,NA        ,C2        ,,,,,,,,
+P13NAC1             ,P13       ,NA        ,C2        ,COD. ARTICULO,Lote,DESCRIPCION ARTICULO ,CANT.,,,,
+P13NAC1             ,P13       ,NA        ,C2        ,25-CAFU-006,J220111-L007,"Carpal, 6H, 5T, Blue",2,1,"Carpal, 6H, 5T, Blue",101,P
+P13NAC1             ,P13       ,NA        ,C2        ,25-CAFU-007,J220126-L109,"Carpal, 7H, 5T, Blue",2,1,"Carpal, 7H, 5T, Blue",102,P
+P13NAC1             ,P13       ,NA        ,C2        ,25L-SO-008-TA,R211222-L048,"Ø2.5 Locking, Torx T8, 8mm, Blue",5,1,"Ø2.5 Locking, Torx T8, 8mm, Blue",103,TB
+P13NAC1             ,P13       ,NA        ,C2        ,25L-SO-010-TA,R211117-L055,"Ø2.5 Locking, Torx T8, 10mm, Blue",5,1,"Ø2.5 Locking, Torx T8, 10mm, Blue",104,TB
+P13NAC1             ,P13       ,NA        ,C2        ,25L-SO-012-TA,J211223-L119,"Ø2.5 Locking, Torx T8, 12mm, Blue",5,1,"Ø2.5 Locking, Torx T8, 12mm, Blue",105,TB
+P13NAC1             ,P13       ,NA        ,C2        ,25L-SO-014-TA,J211222-L020,"Ø2.5 Locking, Torx T8, 14mm, Blue",5,1,"Ø2.5 Locking, Torx T8, 14mm, Blue",106,TB
+P13NAC1             ,P13       ,NA        ,C2        ,25L-SO-016-TA,J211015-L043,"Ø2.5 Locking, Torx T8, 16mm, Blue",5,1,"Ø2.5 Locking, Torx T8, 16mm, Blue",107,TB
+P13NAC1             ,P13       ,NA        ,C2        ,25L-SO-018-TA,J211015-L044,"Ø2.5 Locking, Torx T8, 18mm, Blue",5,1,"Ø2.5 Locking, Torx T8, 18mm, Blue",108,TB
+P13NAC1             ,P13       ,NA        ,C2        ,25L-SO-020-TA,J211015-L045,"Ø2.5 Locking, Torx T8, 20mm, Blue",5,1,"Ø2.5 Locking, Torx T8, 20mm, Blue",109,TB
+P13NAC1             ,P13       ,NA        ,C2        ,25L-SO-022-TA,J211015-L046,"Ø2.5 Locking, Torx T8, 22mm, Blue",5,1,"Ø2.5 Locking, Torx T8, 22mm, Blue",110,TB
+P13NAC1             ,P13       ,NA        ,C2        ,25L-SO-024-TA,J220112-L089,"Ø2.5 Locking, Torx T8, 24mm, Blue",5,1,"Ø2.5 Locking, Torx T8, 24mm, Blue",111,TB
+P13NAC1             ,P13       ,NA        ,C2        ,25-SO-008-TA,J201022-L067,"Ø2.5 Cortical, Torx T8, 8mm, Silver",5,1,"Ø2.5 Cortical, Torx T8, 8mm, Silver",112,TC
+P13NAC1             ,P13       ,NA        ,C2        ,25-SO-010-TA,R211227-L004,"Ø2.5 Cortical, Torx T8, 10mm, Silver",5,1,"Ø2.5 Cortical, Torx T8, 10mm, Silver",113,TC
+P13NAC1             ,P13       ,NA        ,C2        ,25-SO-012-TA,J211222-L021,"Ø2.5 Cortical, Torx T8, 12mm, Silver",5,1,"Ø2.5 Cortical, Torx T8, 12mm, Silver",114,TC
+P13NAC1             ,P13       ,NA        ,C2        ,25-SO-014-TA,J210930-L077,"Ø2.5 Cortical, Torx T8, 14mm, Silver",1,1,"Ø2.5 Cortical, Torx T8, 14mm, Silver",115,TC
+P13NAC1             ,P13       ,NA        ,C2        ,25-SO-014-TA,J211222-L022,"Ø2.5 Cortical, Torx T8, 14mm, Silver",4,1,"Ø2.5 Cortical, Torx T8, 14mm, Silver",116,TC
+P13NAC1             ,P13       ,NA        ,C2        ,25-SO-016-TA,J211222-L007,"Ø2.5 Cortical, Torx T8, 16mm, Silver",5,1,"Ø2.5 Cortical, Torx T8, 16mm, Silver",117,TC
+P13NAC1             ,P13       ,NA        ,C2        ,25-SO-018-TA,J211222-L023,"Ø2.5 Cortical, Torx T8, 18mm, Silver",5,1,"Ø2.5 Cortical, Torx T8, 18mm, Silver",118,TC
+P13NAC1             ,P13       ,NA        ,C2        ,25-SO-020-TA,R211207-L010,"Ø2.5 Cortical, Torx T8, 20mm, Silver",5,1,"Ø2.5 Cortical, Torx T8, 20mm, Silver",119,TC
+P13NAC1             ,P13       ,NA        ,C2        ,25-SO-022-TA,R211222-L051,"Ø2.5 Cortical, Torx T8, 22mm, Silver",5,1,"Ø2.5 Cortical, Torx T8, 22mm, Silver",120,TC
+P13NAC1             ,P13       ,NA        ,C2        ,25-SO-024-TA,J211222-L024,"Ø2.5 Cortical, Torx T8, 24mm, Silver",5,1,"Ø2.5 Cortical, Torx T8, 24mm, Silver",121,TC
+P13NAC1             ,P13       ,NA        ,C2        ,CODIGO,,DESCRIPCIÓN,CANTIDAD,,DESCRIPCIÓN,122,TC
+P13NAC1             ,P13       ,NA        ,C2        ,112-25-701,,"BROCA 2.0, 20mm, 84mm, 110mm, AO",2,2,"BROCA 2.0, 20mm, 84mm, 110mm, AO",123,I
+P13NAC1             ,P13       ,NA        ,C2        ,113-HF-613,,ANCLAJE RAPIDO ,1,2,ANCLAJE RAPIDO ,124,I
+P13NAC1             ,P13       ,NA        ,C2        ,113-HF-613,,ANCLAJE RAPIDO ,1,2,ANCLAJE RAPIDO ,125,I
+P13NAC1             ,P13       ,NA        ,C2        ,111-010,,MANGO DE ATORNILLADOR ,1,2,MANGO DE ATORNILLADOR ,126,I
+P13NAC1             ,P13       ,NA        ,C2        ,111-080,,GUIA DE BROCA 2.0MM,1,2,GUIA DE BROCA 2.0MM,127,I
+P13NAC1             ,P13       ,NA        ,C2        ,111-075,,MEDIDOR DE PROFUNDIDAD,1,2,MEDIDOR DE PROFUNDIDAD,128,I
+P13NAC1             ,P13       ,NA        ,C2        ,111-101,,GUIA DE BLOQUEO ,1,2,GUIA DE BLOQUEO ,129,I
+P13NAC1             ,P13       ,NA        ,C2        ,111-103,,GUIA DE BLOQUEO ANGULO VARIABLE ,1,2,GUIA DE BLOQUEO ANGULO VARIABLE ,130,I
+P13NAC1             ,P13       ,NA        ,C2        ,111-157,,Drill DE GUIA ANGULO VARIABLE  ,1,2,Drill DE GUIA ANGULO VARIABLE  ,131,I
+P13NAC1             ,P13       ,NA        ,C2        ,114-009,,PINZA DE SUJECCION ,1,2,PINZA DE SUJECCION ,132,I
+P13NAC1             ,P13       ,NA        ,C2        ,111-165,,Reamer ,1,2,Reamer ,133,I
+P13NAC1             ,P13       ,NA        ,C2        ,111-169,,PIN DE SUJECCION ,1,2,PIN DE SUJECCION ,134,I
+P13NAC1             ,P13       ,NA        ,C2        ,112-118,,ARIX Wrist system_Carpal Tray,1,2,ARIX Wrist system_Carpal Tray,135,I

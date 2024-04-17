@@ -1,0 +1,1085 @@
+
+LOCAL comboz,xsql,ycon,xano,yano,ymes,ydia,xcon,ycon1
+xcon=''
+&&ycon=''
+xcodigo=thisform.txtcodigo.Value
+xfechai=thisform.txtfechai.Value
+xfechaf=thisform.txtfechaf.Value
+&&xfechai =dtoc(xfechai)
+&&xfechaf=dtoc(xfechaf)
+xnum=thisform.txtnum.Value
+ynum=STR(xnum)
+&&MESSAGEBOX(xfechai)
+&&,observacion="+'"+txtobservacion+"'+
+txtobservacion=thisform.txtobservacion.Value
+		&&xano=YEAR(xfechai)
+		&&xmes=month(xfechai)
+		&&xdia=day(xfechai)
+		&&xano=STR(xano)
+		&&xmes=STR(xmes)
+		&&xdia=STR(xdia)
+cadenaconexion = "DRIVER={SQL server};"+"UID=;"+"PWD=;"+"SERVER="+xservidor+";"+"DATABASE="+xdb
+conexion= Sqlstringconnect(cadenaconexion)
+thisform.grid1.RecordSource=''
+&&xcon="UPDATE brucella set fechai="+DTOC(xfechai)+",fechaf="+DTOC(xfechaf)
+&&xcon="UPDATE brucella set fechai="+DTOC(xfechai)+",fechaf="+DTOC(xfechaf)+",observacion="+txtobservacion+"where YEAR(fechai)="+yano+"and month(fechai)="+ymes+"and day(fechai)="+ydia
+&&xcon="UPDATE brucella set fechai='06/06/2012' where num="+ynum
+
+&&&&&&  '"+dtoc(xfechai)+"','"+dtoc(xfechaf)+"','"+txtobservacion+"'
+&&xcon="UPDATE brucella set fechai="+'"dtoc(xfechai)"'+",fechaf="+'"dtoc(xfechai)"'+",observacion="+'"txtobservacion"'+"where num="+ynum
+xcon="UPDATE brucella set fechai=?xfechai,fechaf=?xfechaf,observacion=?txtobservacion,fec_reg=getdate() where num="+ynum
+SQLEXEC(conexion,xcon,'ycon')
+
+			thisform.grid1.RecordSource=''
+			xcon="select codigo,CONVERT(VARCHAR,FECHAI,103)as fechai,CONVERT(VARCHAR,FECHAF,103)as fechaf,observacion,num  from brucella where codigo="+xcodigo+"order by YEAR(fechaf) desc"		
+			SQLEXEC(conexion,xcon,'ycon')
+			SELECT ycon
+			&&MESSAGEBOX('MODIFICADO.......')
+			thisform.grid1.RecordSource='ycon'
+				thisform.grid1.SetAll("DynamicBackColor", ;
+			   "IIF(MOD(RECNO( ), 2)=0, RGB(255,255,255) ;
+			   , RGB(216,233,220))", "Column")  && Alternate white and green records
+			   thisform.grid1.column1.width = 80 
+			   thisform.grid1.column2.width = 80
+			   thisform.grid1.column3.width = 80
+			   thisform.grid1.column3.width = 100			   
+			
+			thisform.grid1.Refresh
+SQLDISCONNECT(conexion)
+return .t.
+
+
+
+
+********************
+
+TEXT TO xsql01 NOSHOW TEXT PRETEXT 7
+	update rp set 
+	rp.precio_1=10, 
+	rp.precio_2=20,
+	rp.precio_3=30,
+	rp.precio_4=40,
+	rp.precio_5=50,
+	rp.precio_6=60
+	FROM referencias_pre rp 
+WHERE  rp.codigo  = ALTRIM(thisform.paginas.precios.txtcodigo1.Value)
+
+*******
+
+
+
+----
+
+
+LOCAL comboz,xsql,ycon,xano,yano,ymes,ydia,xcon,ycon1,xp1,xp2,xp3,xp4,xp5,xp6,xp7
+xcon=''
+	xp1=thisform.paginas.precios.txtp1.value 
+	xp2=thisform.paginas.precios.txtp2.value
+	xp3=thisform.paginas.precios.txtp3.value
+	xp4=thisform.paginas.precios.txtp4.value
+	xp5=thisform.paginas.precios.txtp5.value
+	xp6=thisform.paginas.precios.txtp6.value
+	xp7=thisform.paginas.precios.txtp7.value
+
+MESSAGEBOX(xp1)
+
+cadenaconexion = "DRIVER={SQL server};"+"UID=;"+"PWD=;"+"SERVER="+xservidor+";"+"DATABASE="+xdb
+conexion= Sqlstringconnect(cadenaconexion)
+thisform.paginas.precios.Grid1.RecordSource=''
+
+
+TEXT TO xsql01 NOSHOW TEXT PRETEXT 7
+	update rp set 
+	rp.precio_1=10, 
+	rp.precio_2=20,
+	rp.precio_3=30,
+	rp.precio_4=40,
+	rp.precio_5=50,
+	rp.precio_6=60
+	FROM referencias_pre rp 
+WHERE  rp.codigo  = ALTRIM(thisform.paginas.precios.txtcodigo1.Value)
+
+			SQLEXEC(conexion,xsql01 ,'ycon')
+			
+MESSAGEBOX(xsql01)
+MESSAGEBOX(SQLEXEC(conexion,xsql01 ,'ycon'))
+			
+			
+			xcon="select r.codigo,r.descripcion,rp.precio_1,rp.precio_2,rp.precio_3,rp.precio_4,rp.precio_5,rp.precio_6,rp.precio_7,rp.precio_8,rp.precio_9,rp.precio_10 from referencias_pre rp  left join referencias r on r.codigo=rp.codigo where r.descripcion like '%"+xcodigo+"%'"
+			SQLEXEC(conexion,xcon,'ycon')
+			SELECT ycon		
+			thisform.paginas.precios.grid1.RecordSource='ycon'
+			thisform.paginas.precios.Grid1.SetAll("DynamicBackColor", ;
+			 "IIF(MOD(RECNO( ), 2)=0, RGB(255,255,255) ;
+			 , RGB(216,233,220))", "Column")  && Alternate white and green records
+
+	SQLDISCONNECT(conexion)
+	return .t.
+
+-----
+
+
+
+------------------------
+
+
+TEXT TO xsql01 NOSHOW TEXT PRETEXT 7
+	update rp set 
+	rp.precio_1=10, 
+	rp.precio_2=20,
+	rp.precio_3=30,
+	rp.precio_4=40,
+	rp.precio_5=50,
+	rp.precio_6=60
+	FROM referencias_pre rp 
+WHERE  rp.codigo = '<<xcod>>'
+ENDTEXT
+			SQLEXEC(conexion,xsql01 ,'ycon')
+			
+MESSAGEBOX(xsql01)
+MESSAGEBOX(SQLEXEC(conexion,xsql01 ,'ycon'))
+			
+			
+			xcon="select r.codigo,r.descripcion,rp.precio_1,rp.precio_2,rp.precio_3,rp.precio_4,rp.precio_5,rp.precio_6,rp.precio_7,rp.precio_8,rp.precio_9,rp.precio_10 from referencias_pre rp  left join referencias r on r.codigo=rp.codigo where r.descripcion like '%"+xcodigo+"%'"
+			SQLEXEC(conexion,xcon,'ycon')
+			SELECT ycon		
+			thisform.paginas.precios.grid1.RecordSource='ycon'
+			thisform.paginas.precios.Grid1.SetAll("DynamicBackColor", ;
+			 "IIF(MOD(RECNO( ), 2)=0, RGB(255,255,255) ;
+			 , RGB(216,233,220))", "Column")  && Alternate white and green records
+
+	SQLDISCONNECT(conexion)
+	return .t.
+
+
+----
+
+
+
+
+TEXT TO xsql NOSHOW TEXT PRETEXT 7
+		select c.tipo,c.numero,1 as seq,ISNULL (m.cuenta,16050501 ) AS cuenta ,ISNULL(m.centro,b.centro) as centro,d.nit,c.fecha,c.valor,0 as base,d.numero as documento,d.tipo as explicacion
+		FROM documentos_cruce c 
+		left join documentos d on d.tipo=c.tipo_aplica and d.numero=c.numero_aplica
+		left join bodegas b on b.bodega=d.bodega
+		left join movimiento m on m.tipo=d.tipo and m.numero=d.numero and m.cuenta='16050501' and m.valor<0
+		WHERE c.tipo='<<recibo>>' AND c.numero='<<num>>'
+		order by d.nit,c.tipo,c.numero
+	ENDTEXT 
+*MESSAGEBOX(xsql)
+	er=SQLEXEC(nHanlet,xsql,"gg")
+	IF er<1
+	IF AERROR(laError) > 0
+	    *-- Ocurrio un error
+	    * DISPLAY MEMORY LIKE laError
+	    lcMsg = ""
+	    FOR ln = 1 TO ALEN(laError,2)
+	      lcMsg = lcMsg + TRANSFORM(laError(1,ln)) + CHR(13)
+	    ENDFOR
+	    MESSAGEBOX(lcMsg, 16, "Error de ODBC")
+	    MESSAGEBOX(xsql)
+		thisform.Release 
+		RETURN 
+	ENDIF
+	ENDIF 
+	SELECT gg
+------
+
+3162656663
+
+
+---------------------INICIO ----
+
+SET TALK OFF
+SET STATUS OFF
+ON SHUTDOWN quit
+_screen.WindowState= 0
+_screen.Caption="AGROPECUARIOS - COLACTEOS"
+
+Public xcon,ycon,conexion,xservidor,xdb,bandera
+bandera=.t.
+SET CENTURY ON 
+&& Conecta a la base de datos
+&&xdb=ALLTRIM(thisform.frame.p1.txtdb.value)
+xdb="COLACTEOS_copia"
+&&xservidor=ALLTRIM(thisform.frame.p1.txtservidor.value)
+&&xservidor="ofi-auxsis1"
+xservidor="COLPAZDB"
+&&xpasswd=ALLTRIM(thisform.frame.p1.Txtpasswd.value)
+
+**base = "COLACTEOS"
+**cAppConnectString = "DRIVER={SQL server};UID=;PWD=;SERVER=AJCM\SQLEXPRESS;DATABASE="+cDns
+cadenaconexion = "DRIVER={SQL server};"+"UID=;"+"PWD=;"+"SERVER="+xservidor+";"+"DATABASE="+xdb
+conexion= Sqlstringconnect(cadenaconexion) 
+**MESSAGEBOX (xservidor)
+if conexion <=0
+messagebox('ESTE USUARIO NO TIENE CONEXION A LA BASE DE DATOS',64,'AVISO')
+return .f.
+ELSE
+	&&messagebox('SE HA CONECTADO A LA BASE DE DATOS',64,'AVISO')
+	WAIT 'CONECTANDO CON LA BASE ...'WINDOW  TIMEOUT 1
+ 
+
+
+
+ENDIF
+
+SQLDISCONNECT(conexion)
+**DO menu1.mpr
+DO FORM agros
+
+
+
+---------------------abonos --
+
+*---Version 2016 niif
+PUBLIC opcion,pagina,xdire,xsql,xnom_us
+LOCAL lcMainClassLib
+LOCAL lcLastSetTalk,lcLastSetPath,lcLastSetClassLib,lcOnShutdown
+SET EXCLUSIVE OFF
+SET CENT ON
+SET TALK OFF
+SET DELE ON
+SET SAFE OFF
+SET NOTI OFF
+SET HOUR TO 24
+SET SCOR OFF
+SET DATE TO DMY
+SET SECO OFF
+SET SYSMENU OFF 
+SET STATUS OFF
+SET STATUS BAR OFF
+SET NULL OFF
+SET MESS TO 'AGROPECUARIOS'
+*-- Save and configure environment
+PAGINA=0
+xdire=SYS(2003)
+xsql=''
+xnom_us=''
+lcLastSetTalk=SET("TALK")
+lcLastSetPath=SET("PATH")
+XDIRE=SYS(5)+SYS(2003)
+CD "&XDIRE"
+cRuta1=SYS(5)+CURDIR()
+**SET DEFAULT TO (cRuta1)
+*SET PATH TO \dms-louis2
+SET PATH TO F:\AGROS
+lcLastSetClassLib=SET("CLASSLIB")
+SET CLASSLIB TO analisisddlech ADDITIVE 
+IF _ESTAACTIVA('AGROS')
+	MESSAGEBOX('APLICACION DMS-AGROS ACTIVA')
+	QUIT
+ENDIF
+lcOnShutdown="ShutDown()"
+ON SHUTDOWN &lcOnShutdown
+ON ERROR DO pcwerror WITH ERROR(),MESSAGE(),PROGRAM(),LINENO(),SYS(16)
+*-- Instantiate application object.
+RELEASE goApp
+PUBLIC goApp
+With _Screen
+   .BorderStyle=0
+   .Closable=.t.
+   .ControlBox=.t.
+   .MaxButton=.f.
+   .MinButton=.f.
+   .Movable=.t.
+   .Caption="DMS-AGROPECUARIOS"
+   .Windowstate=1
+   *.icon='F:\dms-abonos\pc.ico'
+   .width=480
+   .autocenter=.t.
+   .height=640
+   .left=(SYSMETRIC(1)/2)-.width/2
+   .top=200
+   *.picture='galeras.jpg'
+ENDWITH
+opcion=1
+goApp=CREATEOBJECT("cApplication")
+goApp.cStartupForm="AGROS"
+goApp.Show
+RELEASE goApp
+ON ERROR
+ON SHUTDOWN 
+return
+
+FUNCTION ErrorHandler(nError,cMethod,nLine)
+LOCAL lcErrorMsg,lcCodeLineMsg
+SWER=.T.
+if nerror=1707
+	wait wind 'NO Existe CDX' time 5
+	return
+endif
+if nerror=15.OR.nerror=2005
+	wait wind 'Recupere Tabla' time 5
+	return
+endif
+IF NERROR=1104
+	WAIT WIND 'ERROR DE LECTURA' TIME 5
+	RETURN
+ENDIF
+wait wind str(nerror)+MESSAGE() TIME 5
+WAIT CLEAR
+lcErrorMsg=MESSAGE()+CHR(13)+CHR(13)
+lcErrorMsg=lcErrorMsg+"Method:    "+cMethod
+lcCodeLineMsg=MESSAGE(1)
+IF BETWEEN(nLine,1,10000) AND NOT lcCodeLineMsg="..."
+	lcErrorMsg=lcErrorMsg+CHR(13)+"Line:         "+ALLTRIM(STR(nLine))
+	IF NOT EMPTY(lcCodeLineMsg)
+		lcErrorMsg=lcErrorMsg+CHR(13)+CHR(13)+lcCodeLineMsg
+	ENDIF
+ENDIF
+IF MESSAGEBOX(lcErrorMsg,17,_screen.Caption)#1
+	ON ERROR
+	RETURN .F.
+ENDIF
+ENDFUNC
+
+FUNCTION ShutDown
+
+IF TYPE("goApp")=="O" AND NOT ISNULL(goApp)
+	RETURN goApp.OnShutDown()
+ENDIF
+Cleanup()
+QUIT
+ENDFUNC
+
+
+FUNCTION Cleanup
+
+IF CNTBAR("_msysmenu")=7
+	RETURN
+ENDIF
+ON ERROR
+ON SHUTDOWN
+SET CLASSLIB TO
+SET PATH TO
+RETURN
+
+*-----------------------------------------------
+Function _EstaActiva(tcCaption)
+*-----------------------------------------------
+* Verifica si una aplicación ya está activa
+* USO: _EstaActiva(<Caption_de_la_aplicación>)
+* RETORNA: .T. Si la aplicación está activa
+*-----------------------------------------------
+DECLARE INTEGER FindWindow in WIN32API ;
+  STRING cNULL, ;
+  STRING cWinName
+
+return FindWindow(0, tcCaption) # 0
+EndFunc
+
+
+FUNCTION uno
+*=Messagebox('Click Izquierdo - Uno')
+CLOSE DATABASES 
+thisform.Release
+quit
+RETURN .t.
+
+FUNCTION dos
+*=Messagebox('Click Derecho - Dos')
+*DO agrosdms-abono.mpr
+RETURN .t.
+
+FUNCTION pcwerror
+PARAMETERS N_ERROR,n_message,n_program,n_lineno,n0_program
+*------
+rta=0
+lcMsg = ""
+IF AERROR(laError) > 0
+    *-- Ocurrio un error
+    FOR ln = 1 TO ALEN(laError,2)
+      lcMsg = lcMsg + TRANSFORM(laError(1,ln)) + CHR(13)
+    ENDFOR
+    msg_err=xnOm_us+'<br>'+'Error No.'+STR(N_ERROR)+'<br>'+'Descripcion:'+n_MESSAGE+'<br>'+'Programa:'+n_PROGRAM+'<br>'+'Linea:'+STR(n_LINENO)+lcMsg+'<br>'+xsql
+	RTA=MESSAGEBOX('Error No.'+STR(N_ERROR)+CHR(13)+'Descripcion:'+n_MESSAGE+CHR(13)+'Programa:'+n_PROGRAM+CHR(13)+'Linea:'+STR(n_LINENO)+lcMsg+CHR(13)+xsql,2+32+4096,'Control de Errores PcW',10000)
+ELSE
+	IF n_error<>0
+		msg_err=xnOm_us+'<br>'+'Error No.'+STR(N_ERROR)+'<br>'+'Descripcion:'+n_MESSAGE+'<br>'+'Programa:'+n_PROGRAM+'<br>'+'Linea:'+STR(n_LINENO)+'<br>'+xsql
+		RTA=MESSAGEBOX('Error No.'+STR(N_ERROR)+CHR(13)+'Descripcion:'+n_MESSAGE+CHR(13)+'Programa:'+n_PROGRAM+CHR(13)+'Linea:'+STR(n_LINENO),2+32+4096,'Control de Errores PcW',50000)
+	ENDIF 
+ENDIF
+*------
+IF FILE(xdire+'pcwmail.cfg')
+***	=mail_louis('louisbas@gmail.com','louisbas@gmail.com','Reporte de Error PCWIN '+TIME(),xempresa + '<br>' +SYS(0) + '<br>' + '<br>'+ ipaddress()+'<br>'+n0_program+'<br>Linea:'+STR(n_LINENO)+'<br>'+ msg_err)
+ENDIF 
+*------
+DO CASE
+	CASE RTA=3 OR RTA=0
+		CLOSE ALL
+		QUIT
+	CASE RTA=4
+		RETRY
+	CASE RTA=5
+ENDCASE
+RETURN
+
+*******************
+*** ipaddress
+*******************
+***http://fox.wikis.com/wc.dll?Wiki~FindingIPAddress
+***OBTENER DIRECCION IP
+FUNCTION ipaddress
+oWMI = getobject("winmgmts:")
+oAdapters = oWMI.ExecQuery("Select * from Win32_NetworkAdapterConfiguration where IPEnabled=True")
+rtn_=''
+for each oAdapter in oAdapters
+	if not isnull(oAdapter.ipaddress)
+		for each cAddress in oAdapter.ipaddress
+			rtn_=rtn_+CHR(13)+cAddress
+***			EXIT  && deshabilitada para mostrar todas las direcciones
+		next
+	endif
+NEXT
+RETURN rtn_
+
+FUNCTION xpcwerror
+***PARAMETERS N_ERROR,n_message,n_program,n_lineno,n0_program
+***do prtscreen  && deshabilitado por pruebas de velocidad
+*MESSAGEBOX(N_ERROR)
+*------
+rta=0
+lcMsg = ""
+IF AERROR(laError) > 0
+    *-- Ocurrio un error
+    FOR ln = 1 TO ALEN(laError,2)
+      lcMsg = lcMsg + TRANSFORM(laError(1,ln)) + CHR(13)
+    ENDFOR
+    msg_err=xnOm_us+'<br>'+'Error No.'+STR(N_ERROR)+'<br>'+'Descripcion:'+n_MESSAGE+'<br>'+'Programa:'+n_PROGRAM+'<br>'+'Linea:'+STR(n_LINENO)+lcMsg+'<br>'+xsql+'<br>'+ALIAS()+'<br>'+PROGRAM(1)+'<br>'+PROGRAM(2)+'<br>'+PROGRAM(3)+'<br>'+_screen.Caption 
+	RTA=MESSAGEBOX('Error No.'+STR(N_ERROR)+CHR(13)+'Descripcion:'+n_MESSAGE+CHR(13)+'Programa:'+n_PROGRAM+CHR(13)+'Linea:'+STR(n_LINENO)+lcMsg+CHR(13)+xsql,2+32+4096,'Control de Errores PcW',10000)
+	swer=.t.
+ELSE
+	IF n_error<>0
+		msg_err=xnOm_us+'<br>'+'Error No.'+STR(N_ERROR)+'<br>'+'Descripcion:'+n_MESSAGE+'<br>'+'Programa:'+n_PROGRAM+'<br>'+'Linea:'+STR(n_LINENO)+'<br>'+xsql+'<br>'+ALIAS()+'<br>'+PROGRAM(1)+'<br>'+PROGRAM(2)+'<br>'+PROGRAM(3)+'<br>'+_screen.Caption 
+		RTA=MESSAGEBOX('Error No.'+STR(N_ERROR)+CHR(13)+'Descripcion:'+n_MESSAGE+CHR(13)+'Programa:'+n_PROGRAM+CHR(13)+'Linea:'+STR(n_LINENO),2+32+4096,'Control de Errores PcW',50000)
+		swer=.t.
+	ENDIF 
+ENDIF
+RETURN
+
+READ events
+
+-------------------- fin abonos
+
+
+
+READ events
+
+
+
+
+-----------------
+
+
+
+----- ok 
+
+SET TALK OFF
+SET STATUS OFF
+ON SHUTDOWN quit
+_screen.WindowState= 0
+_screen.Caption="AGROPECUARIOS - COLACTEOS"
+
+Public xcon,ycon,conexion,xservidor,xdb,bandera
+bandera=.t.
+SET CENTURY ON 
+&& Conecta a la base de datos
+&&xdb=ALLTRIM(thisform.frame.p1.txtdb.value)
+xdb="COLACTEOS_copia"
+&&xservidor=ALLTRIM(thisform.frame.p1.txtservidor.value)
+&&xservidor="ofi-auxsis1"
+xservidor="COLPAZDB"
+&&xpasswd=ALLTRIM(thisform.frame.p1.Txtpasswd.value)
+
+**base = "COLACTEOS"
+**cAppConnectString = "DRIVER={SQL server};UID=;PWD=;SERVER=AJCM\SQLEXPRESS;DATABASE="+cDns
+cadenaconexion = "DRIVER={SQL server};"+"UID=;"+"PWD=;"+"SERVER="+xservidor+";"+"DATABASE="+xdb
+conexion= Sqlstringconnect(cadenaconexion) 
+**MESSAGEBOX (xservidor)
+if conexion <=0
+messagebox('ESTE USUARIO NO TIENE CONEXION A LA BASE DE DATOS',64,'AVISO')
+return .f.
+ELSE
+	&&messagebox('SE HA CONECTADO A LA BASE DE DATOS',64,'AVISO')
+	WAIT 'CONECTANDO CON LA BASE ...'WINDOW  TIMEOUT 1
+ ENDIF
+SQLDISCONNECT(conexion)
+**DO menu1.mpr
+DO FORM agros
+READ events
+
+With _Screen
+   .BorderStyle=0
+   .Closable=.t.
+   .ControlBox=.t.
+   .MaxButton=.f.
+   .MinButton=.f.
+   .Movable=.t.
+   .Caption="DMS-AGROPECUARIOS"
+   .Windowstate=1
+   *.icon='F:\dms-abonos\pc.ico'
+   .width=480
+   .autocenter=.t.
+   .height=640
+   .left=(SYSMETRIC(1)/2)-.width/2
+   .top=200
+   *.picture='galeras.jpg'
+ENDWITH
+
+
+--- fin ok
+
+
+
+****
+WITH _SCREEN
+ oldScreenLeft=.Left       
+ oldScreenTop=.Top
+ oldScreenHeight=.Height
+ oldScreenWidth=.Width
+ oldScreenColor = .Backcolor
+  Copy Code 
+ .LockScreen=.T.       
+ .BackColor=rgb(192,192,192)   
+ .BorderStyle=2        
+ .Closable=.F.         
+ .ControlBox=.F.
+ .MaxButton=.F.
+ .MinButton=.T.
+ .Movable=.T.
+ .Height=285
+ .Width=550
+ .Caption="Custom Screen"    
+ .LockScreen=.F.       
+ENDWITH
+=MESSAGEBOX("Return to normal  ",48,WTITLE())
+ 
+
+*-----
+
+
+
+
+---INIICO
+With _Screen
+   .BorderStyle=0
+   .Closable=.t.
+   .ControlBox=.t.
+   .MaxButton=.f.
+   .MinButton=.f.
+   .Movable=.t.
+   .Caption="DMS-AGROPECUARIOS"
+   .Windowstate=1
+   *.icon='F:\dms-abonos\pc.ico'
+   .width=1050
+   .autocenter=.t.
+   .height=500
+   .left=(SYSMETRIC(1)/2)-.width/2
+   .top=200
+   *.picture='galeras.jpg'
+ENDWITH
+
+---FN INICI
+
+
+
+
+---- config 
+SET TALK OFF
+SET STATUS OFF
+ON SHUTDOWN quit
+**_screen.WindowState=0
+_screen.Caption="AGROPECUARIOS - COLACTEOS"
+
+Public xcon,ycon,conexion,xservidor,xdb,bandera
+bandera=.t.
+SET CENTURY ON 
+&& Conecta a la base de datos
+&&xdb=ALLTRIM(thisform.frame.p1.txtdb.value)
+xdb="COLACTEOS_copia"
+&&xservidor=ALLTRIM(thisform.frame.p1.txtservidor.value)
+&&xservidor="ofi-auxsis1"
+xservidor="COLPAZDB"
+&&xpasswd=ALLTRIM(thisform.frame.p1.Txtpasswd.value)
+
+**base = "COLACTEOS"
+**cAppConnectString = "DRIVER={SQL server};UID=;PWD=;SERVER=AJCM\SQLEXPRESS;DATABASE="+cDns
+cadenaconexion = "DRIVER={SQL server};"+"UID=;"+"PWD=;"+"SERVER="+xservidor+";"+"DATABASE="+xdb
+conexion= Sqlstringconnect(cadenaconexion) 
+**MESSAGEBOX (xservidor)
+if conexion <=0
+messagebox('ESTE USUARIO NO TIENE CONEXION A LA BASE DE DATOS',64,'AVISO')
+return .f.
+ELSE
+	&&messagebox('SE HA CONECTADO A LA BASE DE DATOS',64,'AVISO')
+	WAIT 'CONECTANDO CON LA BASE ...'WINDOW  TIMEOUT 1
+ 
+ENDIF
+SQLDISCONNECT(conexion)
+**DO menu1.mpr
+DO FORM agros
+
+With _Screen
+   .BorderStyle=0
+   .Closable=.t.
+   .ControlBox=.t.
+   .MaxButton=.f.
+   .MinButton=.f.
+   .Movable=.t.
+   .Caption="Agropecuarios"
+   .Windowstate=1
+   **.icon='F:\dms-abonos\pc.ico'
+   .width=1050
+   .autocenter=.t.
+   .height=500
+   .left=(SYSMETRIC(1)/2)-.width/2
+   .top=200
+   .TitleBar=1
+   **.picture='galeras.jpg'
+ENDWITH
+
+**=MESSAGEBOX("Return to normal  ",48,WTITLE())
+READ events
+
+
+
+--finconfig
+
+
+
+
+
+*****
+	set sysmenu to default
+	Local oldScreenLeft
+	Local oldScreenTop
+	Local oldScreenHeight
+	Local oldScreenWidth
+	Local oldScreenColor
+	WITH _Screen
+       oldScreenLeft=.Left                 && Guardar el tamaño y la posición actuales
+	   oldScreenTop=.Top
+	   oldScreenHeight=.Height
+	   oldScreenWidth=.Width
+	   oldScreenColor = .Backcolor
+		*.LockScreen=.T.                     && Desactiva el redibujado de pantalla
+		.BackColor=rgb(192,192,192)         && Cambiar el color de fondo a gris
+		.BorderStyle=2                     && Cambiar el borde a doble
+		.Closable=.T.                       && Quitar botones de control de ventana
+		*.ControlBox=.F.
+		.MaxButton=.T.
+		.MinButton=.T.
+		.Movable=.T.
+		.Height=460		
+		.Width=1020
+		.Caption="Agropecuarios - Colacteos.                                                                                                                                                                        Alberto Caicedo"            && Establecer un título
+		*.LockScreen=.F.     
+		**.Left = oldScreenLeft               && Restablecer el tamaño
+        .AutoCenter=.T.
+        **.Top = 200                 && y posición original
+        .SCREEN = OFF
+ENDWITH
+SET SYSMENU OFF
+*****
+
+
+
+**** importar
+USE proveedores AGAIN IN 0
+SELECT Proveedores
+UPDATE p SET boni_pesos=100 FROM proveedores p
+USE
+
+archi=GETFILE('csv','Archivo de texto','Abrir')
+if !EMPTY(archi)
+	CREATE CURSOR xprueba (cod_prov c(10),bono n(10))  
+	APPEND FROM '&archi' DELIMITED 
+	IF FILE('prueba200.dbf')
+		DELETE FILE prueba200.dbf
+	ENDIF 
+	COPY TO prueba200
+
+
+	
+	USE proveedores AGAIN IN 0
+    SELECT Proveedores
+	UPDATE p SET p.boni_pesos=l.bono FROM proveedores p JOIN F:\an-leche\prueba200.dbf l ON l.cod_prov=p.cod_prov
+	USE
+	
+	USE proveedores AGAIN IN 0
+    SELECT Proveedores
+    SELECT p.COD_PROV,p.NOMBRE,p.BONI_PESOS as NUEVO_BONO FROM proveedores p JOIN F:\an-leche\prueba200.dbf l ON l.cod_prov=p.cod_prov
+	
+
+	IF FILE('bono200.xls')
+		DELETE FILE  bono200.xls
+	ENDIF 
+	    COPY TO  bono200.xls xls
+	    MESSAGEBOX("Se creo un achivo llamdo F:\an-leche\bono200.xls","CREACION DE ARCHIVO",0)
+USE
+endif
+&&GO TOP
+&&THISFORM.P.CMD200x.ENABLED= .F.
+
+ MESSAGEBOX('SE ACTUALIZARON DATOS DE BONOS DE FIDELIDAD ',"REINICIAR SISTEMA",0)
+
+
+ 
+**** fin importar
+
+
+
+--------------------------
+
+  
+		*****IF thisform.paginas.pg4.validar.Value=0 
+		***=MESSAGEBOX('documentos actualizados' )
+		****mensaje=IIF(recibo='RQUI','Quincena','Nomina')
+		TEXT TO xsql NOSHOW TEXT PRETEXT 7
+			update rp 
+			set rp.codigo=a1.codigo,
+			rp.precio_1=a1.precio1, 
+			rp.precio_2=a1.precio2,
+			rp.precio_3=a1.precio3,
+			rp.precio_4=a1.precio4,
+			rp.precio_5=a1.precio5
+			rp.precio_6=a1.precio6
+			from F:\AGROS\ARCHIVO\agros.dbf a1 
+			left join referencias_pre rp on rp.codigo=a1.codigo
+		
+		ENDTEXT 
+		*thisform.paginas.pg4.edit1.Value=xsql
+		er=SQLEXEC(conexion,xsql,"ycon")
+		IF er<>1
+		*	this.Caption='Fin...'
+		*	_cliptext=xsql
+			=MESSAGEBOX('Registros con Error - Actualizando Valor Aplicado'+STR(er))
+			CANCEL 
+		ENDIF 
+		**ENDIF 
+  
+  
+  
+  
+  
+  
+  
+						
+*						USE proveedores AGAIN IN 0
+*					    SELECT Proveedores
+*						UPDATE p SET p.boni_pesos=l.bono FROM proveedores p JOIN F:\an-leche\prueba200.dbf l ON l.cod_prov=p.cod_prov
+*						USE
+*						
+*						USE proveedores AGAIN IN 0
+*					    SELECT Proveedores
+*					    SELECT p.COD_PROV,p.NOMBRE,p.BONI_PESOS as NUEVO_BONO FROM proveedores p JOIN F:\an-leche\prueba200.dbf l ON l.cod_prov=p.cod_prov
+*						
+*
+*						IF FILE('bono200.xls')
+*							DELETE FILE  bono200.xls
+*						ENDIF 
+*						    COPY TO  bono200.xls xls
+*						    MESSAGEBOX("Se creo un achivo llamdo F:\an-leche\bono200.xls","CREACION DE ARCHIVO",0)
+
+-------------------------
+
+
+LOCAL comboz,xsql,ycon,xano,yano,ymes,ydia,xcon,ycon1,xp1,xp2,xp3,xp4,xp5,xp6,xp7,xcod,er,ln
+xcon=''
+    xcod=ALLTRIM(thisform.paginas.precios.txtcodigo1.Value)
+	xp1=thisform.paginas.precios.txtp1.value 
+	xp2=thisform.paginas.precios.txtp2.value
+	xp3=thisform.paginas.precios.txtp3.value
+	xp4=thisform.paginas.precios.txtp4.value
+	xp5=thisform.paginas.precios.txtp5.value
+	xp6=thisform.paginas.precios.txtp6.value
+	xp7=thisform.paginas.precios.txtp7.value
+
+*--MESSAGEBOX(xcod)
+*--MESSAGEBOX(xp1)
+
+cadenaconexion = "DRIVER={SQL server};"+"UID=;"+"PWD=;"+"SERVER="+xservidor+";"+"DATABASE="+xdb
+conexion= Sqlstringconnect(cadenaconexion)
+thisform.paginas.precios.Grid1.RecordSource=''
+
+
+TEXT TO xsql NOSHOW TEXT PRETEXT 7
+	update rp set 
+	rp.precio_1='<<xp1>>', 
+	rp.precio_2='<<xp2>>',
+	rp.precio_3='<<xp3>>',
+	rp.precio_4='<<xp4>>',
+	rp.precio_5='<<xp5>>',
+	rp.precio_6='<<xp6>>',
+	rp.precio_7='<<xp7>>'
+	FROM referencias_pre rp 
+    WHERE  rp.codigo = '<<xcod>>'
+	ENDTEXT 
+*--MESSAGEBOX(xsql)
+	er=SQLEXEC(conexion,xsql,"ycon")
+
+
+
+
+
+---
+
+
+
+
+		TEXT TO xsql NOSHOW TEXT PRETEXT 7
+			select rp.codigo,a1.codigo as coda1,
+			rp.precio_1,a1.p1, 
+			rp.precio_2,a1.p2,
+			rp.precio_3,a1.p3,
+			rp.precio_4,a1.p4,
+			rp.precio_5,a1.p5
+			rp.precio_6,a1.p6
+			from xprueba a1 
+			left join referencias_pre rp on rp.codigo=a1.codigo
+		ENDTEXT 
+MESSAGEBOX(xsql)
+
+		TEXT TO xsqlu NOSHOW TEXT PRETEXT 7
+			update rp 
+			set rp.codigo=a1.codigo,
+			rp.precio_1=a1.precio1, 
+			rp.precio_2=a1.precio2,
+			rp.precio_3=a1.precio3,
+			rp.precio_4=a1.precio4,
+			rp.precio_5=a1.precio5
+			rp.precio_6=a1.precio6
+			from F:\AGROS\ARCHIVO\agros.dbf a1 
+			left join referencias_pre rp on rp.codigo=a1.codigo
+		ENDTEXT 
+	
+
+
+
+
+
+
+
+	SELECT xprueba 
+	GO TOP 
+	**MESSAGEBOX(xprueba.codigo)
+	*brow
+	yseq=1
+	DO WHILE !EOF()
+	
+		TEXT TO xsql NOSHOW TEXT PRETEXT 7
+		
+			select rp.codigo,xprueba.codigo as coda1,
+			rp.precio_1,'<<al.p1>>', 
+			rp.precio_2,'<<al.p2>>',
+			rp.precio_3,'<<al.p3>>',
+			rp.precio_4,'<<al.p4>>',
+			rp.precio_5,'<<al.p5>>',
+			rp.precio_6,'<<al.p6>>'
+			from xprueba  al
+			left join referencias_pre rp on rp.codigo='<<al.codigo>>'
+		
+        ENDTEXT 
+		er=SQLEXEC(conexion,xsql,"ycon")
+		IF er<1
+			IF AERROR(laError) > 0
+			    lcMsg = ""
+			    FOR ln = 1 TO ALEN(laError,2)
+			      lcMsg = lcMsg + TRANSFORM(laError(1,ln)) + CHR(13)
+			    ENDFOR
+			    MESSAGEBOX(lcMsg, 16, "Error de ODBC")
+			    MESSAGEBOX(xsql)
+			    *-------------------
+		*		TEXT TO xsqlxx NOSHOW TEXT PRETEXT 7
+		*			DELETE FROM movimiento WHERE tipo ='<<movimien.tipo>>' AND  numero='<<movimien.numero>>'
+		*		ENDTEXT 
+		*		er=SQLEXEC(conexion,xsql,"ycon")
+				*-------------------
+				thisform.Release 
+				RETURN 
+			ENDIF
+		ENDIF 
+		yseq=yseq+1
+		SELECT xprueba 
+		SKIP 
+	ENDDO 
+
+
+
+
+
+
+
+----
+
+
+
+*-----------------------
+
+  USE F:\AGROS\ARCHIVO\agros.dbf
+  BROWSE
+  thisform.paginas.importar.grid1.RecordSource='F:\AGROS\ARCHIVO\agros.dbf'
+  
+  	cadenaconexion = "DRIVER={SQL server};"+"UID=;"+"PWD=;"+"SERVER="+xservidor+";"+"DATABASE="+xdb
+	conexion= Sqlstringconnect(cadenaconexion)
+	xsql01="thisform.paginas.importar.grid1.RecordSource='<<xprueba>>'"
+	*bueno*---xsql01="select * from referencias_pre where codigo='COSO1134'"
+	**xsql01="update rp set rp.codigo=a1.codigo,rp.und=a1.und,rp.precio_1=a1.p1 from '%"+F:\AGROS\ARCHIVO\agros.dbf+"%' a1 left join referencias_pre rp on rp.codigo=a1.codigo"
+	*, rp.precio_2=a1.p2,rp.precio_3=a1.p3,rp.precio_4=a1.p4,rp.precio_5=a1.p5,rp.precio_6=a1.p6,rp.precio_7=a1.p7,rp.precio_8=a1.p8,rp.precio_9=a1.p9,rp.precio_10=a1.p10 
+	*from 'F:\AGROS\ARCHIVO\agros.dbf' a1 left join referencias_pre rp on rp.codigo=a1.codigo"
+
+
+ 
+ 
+
+
+
+	
+			* xcon="select r.codigo,r.descripcion,rp.precio_1,rp.precio_2,rp.precio_3,rp.precio_4,rp.precio_5,rp.precio_6,rp.precio_7,rp.precio_8,rp.precio_9,rp.precio_10 from referencias_pre rp  left join referencias r on r.codigo=rp.codigo where r.descripcion like '%"+xcodigo+"%'"
+			SQLEXEC(conexion,xsql01,'ycon')
+			SELECT ycon		
+			thisform.paginas.importar.grid1.RecordSource='ycon'
+				thisform.paginas.precios.Grid1.SetAll("DynamicBackColor", ;
+			   "IIF(MOD(RECNO( ), 2)=0, RGB(255,255,255) ;
+			   , RGB(216,233,220))", "Column")  && Alternate white and green records
+
+
+------
+
+
+
+
+
+	yseq=1
+	DO WHILE !EOF()
+
+TEXT TO xsql NOSHOW TEXT PRETEXT 7
+	update rp set 
+	rp.precio_1='<<agros.xp1>>', 
+	rp.precio_2='<<agros.xp2>>',
+	rp.precio_3='<<agros.xp3>>',
+	rp.precio_4='<<agros.xp4>>',
+	rp.precio_5='<<agros.xp5>>',
+	rp.precio_6='<<agros.xp6>>',
+	rp.precio_7='<<agros.xp7>>'
+	FROM referencias_pre rp left join agros on rp.codigo='<<agros.xcod>>'
+    **WHERE  rp.codigo = '<<agros.xcod>>'
+	ENDTEXT 
+		er=SQLEXEC(conexion,xsql,"ycon")
+		IF er<1
+			IF AERROR(laError) > 0
+			    lcMsg = ""
+			    FOR ln = 1 TO ALEN(laError,2)
+			      lcMsg = lcMsg + TRANSFORM(laError(1,ln)) + CHR(13)
+			    ENDFOR
+			    MESSAGEBOX(lcMsg, 16, "Error de ODBC")
+			    MESSAGEBOX(xsql)
+			    *-------------------
+				TEXT TO xsql NOSHOW TEXT PRETEXT 7
+					DELETE FROM movimiento WHERE tipo ='<<movimien.tipo>>' AND  numero='<<movimien.numero>>'
+				ENDTEXT 
+				er=SQLEXEC(conexion,xsql,"ycon")
+				*-------------------
+				thisform.Release 
+				RETURN 
+			ENDIF
+		ENDIF 
+		yseq=yseq+1
+		SELECT agros
+		SKIP 
+	ENDDO 
+
+
+
+
+	yseq=1
+	DO WHILE !EOF()
+
+    thisform.paginas.importar.txtimp.value = xprueba.codigo
+    	yseq=yseq+1
+		MESSAGEBOX(yseq)
+		SELECT 1
+		SKIP 
+	ENDDO 
+
+
+
+----
+
+
+    	    TEXT TO xsql NOSHOW TEXT PRETEXT 7
+    	    UPDATE rp SET
+			rp.precio_1=<<xprueba.p1>>, 
+			rp.precio_2=<<xprueba.p2>>,
+			rp.precio_3=<<xprueba.p3>>,
+			rp.precio_4=<<xprueba.p4>>,
+			rp.precio_5=<<xprueba.p5>>,
+			rp.precio_6=<<xprueba.p6>>,
+			rp.precio_7=<<xprueba.p7>>,
+			rp.precio_8=<<xprueba.p8>>,
+			rp.precio_9=<<xprueba.p9>>,
+			rp.precio_10=<<xprueba.p10>>									
+			from  referencias_pre rp
+			**where rp.codigo='<<ALLTRIM(xprueba.codigo)>>'
+			where rp.codigo='COSO1134'
+			ENDTEXT
+
+
+
+
+
+----
+
+SELECT * 
+FROM proveedores 
+WHERE asociado<>1 AND estado=1 AND !EMPTY(actualiza)
+
+
+
+------
+
+ UPDATE rp SET rp.precio_1=0.00,rp.precio_2=0.00,rp.precio_3=0.00,
+rp.precio_4=0.00,rp.precio_5=0.00,rp.precio_6=0.00,rp.precio_7=0.00,
+rp.precio_8=0.00,rp.precio_9=0.00,rp.precio_10=0.00									from  referencias_pre r
+
+
+----------------------
+
+APPE BLANK
+REPL RANGO1 WITH 0,RANGO2 WITH 25000,PUNTOS WITH 0,PESOS WITH 127,pesos2 WITH 15
+APPE BLANK
+REPL RANGO1 WITH 25001,RANGO2 WITH 50000,PUNTOS WITH 0,PESOS WITH 107,pesos2 WITH 15
+APPE BLANK
+REPL RANGO1 WITH 50001,RANGO2 WITH 100000,PUNTOS WITH 0,PESOS WITH 86,pesos2 WITH 15
+APPE BLANK
+REPL RANGO1 WITH 100001,RANGO2 WITH 150000,PUNTOS WITH 0,PESOS WITH 64,pesos2 WITH 10
+APPE BLANK
+REPL RANGO1 WITH 150001,RANGO2 WITH 175000,PUNTOS WITH 0,PESOS WITH 40,pesos2 WITH 10
+APPE BLANK
+REPL RANGO1 WITH 175001,RANGO2 WITH 200000,PUNTOS WITH 0,PESOS WITH 0,pesos2 WITH 0
+APPE BLANK
+REPL RANGO1 WITH 200001,RANGO2 WITH 300000,PUNTOS WITH 0,PESOS WITH -22,pesos2 WITH 0
+APPE BLANK
+REPL RANGO1 WITH 300001,RANGO2 WITH 400000,PUNTOS WITH 0,PESOS WITH -40,pesos2 WITH 0
+APPE BLANK
+REPL RANGO1 WITH 400001,RANGO2 WITH 500000,PUNTOS WITH 0,PESOS WITH -64,pesos2 WITH 0
+APPE BLANK
+REPL RANGO1 WITH 500001,RANGO2 WITH 600000,PUNTOS WITH 0,PESOS WITH -86,pesos2 WITH 0
+APPE BLANK
+REPL RANGO1 WITH 600001,RANGO2 WITH 99999999,PUNTOS WITH 0,PESOS WITH -107,pesos2 WITH 0
+thisform.Paginas.page4.text12.value=29
+thisform.Paginas.page4.text1.value=1048
+thisform.Paginas.page4.text2.value=31.44
+thisform.Paginas.page4.text3.value=10.47
+thisform.Paginas.page4.text4.value=11.12
+
+
+
+------------
+
+
+
+
+65551
+65664
